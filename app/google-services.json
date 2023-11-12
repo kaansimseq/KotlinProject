@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1056344892130",
+    "project_id": "kotlinproject-afe80",
+    "storage_bucket": "kotlinproject-afe80.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1056344892130:android:d0e2295d1165ba8089b4bb",
+        "android_client_info": {
+          "package_name": "com.kaansimsek.kotlinproject"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAflrNkLZ6H5f5jC2MpWAsSB-Kdbs1jaDE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
