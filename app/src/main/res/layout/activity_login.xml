@@ -6,72 +6,84 @@
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/loginbkg"
+    android:background="@color/purple"
     tools:context=".LoginActivity">
-    
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:src="@drawable/logo"
+            android:layout_marginTop="100dp">
+        </ImageView>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginTop="430dp"
+            android:layout_marginTop="80dp"
             android:padding="20dp">
 
             <EditText
-                android:layout_width="350dp"
-                android:layout_height="60dp"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
                 android:id="@+id/login_email"
-                android:layout_marginTop="30dp"
-                android:background="@drawable/lavender_border"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:background="@drawable/white_border"
                 android:padding="8dp"
-                android:hint="Email"
-                android:drawableLeft="@drawable/baseline_email_24"
+                android:hint="e-mail"
+                android:drawableLeft="@drawable/logo_email_24"
                 android:drawablePadding="8dp"
-                android:textColor="@color/grey">
+                android:textColor="@color/grey"
+                android:fontFamily="@font/nunito_regular">
             </EditText>
 
             <EditText
-                android:layout_width="350dp"
-                android:layout_height="60dp"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
                 android:id="@+id/login_password"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/lavender_border"
+                android:layout_gravity="center"
+                android:background="@drawable/white_border"
                 android:padding="8dp"
-                android:hint="Password"
+                android:hint="password"
                 android:inputType="textPassword"
-                android:drawableLeft="@drawable/baseline_lock_24"
+                android:drawableLeft="@drawable/logo_lock_24"
                 android:drawablePadding="8dp"
-                android:textColor="@color/grey">
+                android:textColor="@color/grey"
+                android:fontFamily="@font/nunito_regular">
             </EditText>
-            
+
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:id="@+id/loginPswCheckBox"
                 android:text="Show Password"
-                android:textColor="@color/lavender"
+                android:textColor="@color/white"
                 android:textSize="15sp"
-                android:padding="3dp"
-                android:layout_marginStart="200dp"
-                android:layout_marginTop="5dp">
+                android:padding="2dp"
+                android:layout_marginStart="180dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/nunito_medium">
             </CheckBox>
 
             <Button
-                android:layout_width="350dp"
-                android:layout_height="70dp"
+                android:layout_width="120dp"
+                android:layout_height="50dp"
                 android:layout_marginTop="30dp"
-                android:text="Login"
+                android:text="login"
                 android:id="@+id/login_button"
-                android:textSize="18sp"
-                app:cornerRadius = "30dp">
+                android:textSize="20sp"
+                android:textColor="@color/grey"
+                android:textAllCaps="false"
+                android:layout_gravity="center"
+                android:background="@drawable/white_border"
+                android:fontFamily="@font/nunito_bold">
             </Button>
 
             <TextView
@@ -79,27 +91,27 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/forgot_password"
                 android:layout_gravity="center"
-                android:layout_marginTop="6dp"
+                android:layout_marginTop="35dp"
                 android:padding="8dp"
                 android:text="Forgot Password?"
-                android:textColor="@color/lavender"
-                android:textSize="16sp">
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:fontFamily="@font/nunito_semibold">
             </TextView>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/signupRedirectText"
-                android:text="Not yet registered? Signup"
+                android:text="Don’t have an account? Sign up!"
                 android:layout_gravity="center"
                 android:padding="8dp"
-                android:layout_marginTop="14dp"
-                android:textSize="18sp"
-                android:textColor="@color/lavender">
+                android:layout_marginTop="50dp"
+                android:textSize="17sp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/nunito_italic">
             </TextView>
 
         </LinearLayout>
-
     </LinearLayout>
-    </ScrollView>
 </LinearLayout>
