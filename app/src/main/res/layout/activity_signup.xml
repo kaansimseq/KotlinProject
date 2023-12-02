@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/signupbkg"
+    android:background="@color/purple"
     tools:context=".SignupActivity">
 
     <LinearLayout
@@ -14,102 +14,173 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:src="@drawable/logo"
+            android:layout_marginTop="50dp">
+        </ImageView>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginTop="320dp"
+            android:layout_marginTop="20dp"
             android:padding="20dp">
 
             <EditText
-                android:layout_width="350dp"
-                android:layout_height="60dp"
-                android:id="@+id/signup_email"
-                android:layout_marginTop="30dp"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:id="@+id/signup_fullname"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
                 android:background="@drawable/white_border"
                 android:padding="8dp"
-                android:hint="Email"
-                android:drawableLeft="@drawable/logo_email_24"
+                android:hint="full name"
+                android:inputType="textPersonName"
+                android:drawableLeft="@drawable/logo_fullname_24"
                 android:drawablePadding="8dp"
-                android:textColor="@color/grey">
+                android:textColor="@color/grey"
+                android:fontFamily="@font/nunito_regular">
             </EditText>
 
             <EditText
-                android:layout_width="350dp"
-                android:layout_height="60dp"
-                android:id="@+id/signup_password"
-                android:layout_marginTop="20dp"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:id="@+id/signup_phoneNumber"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
                 android:background="@drawable/white_border"
                 android:padding="8dp"
-                android:hint="Password"
-                android:inputType="textPassword"
-                android:drawableLeft="@drawable/baseline_lock_24"
+                android:hint="phone number"
+                android:inputType="phone"
+                android:maxLength="11"
+                android:drawableLeft="@drawable/logo_phone_number_24"
                 android:drawablePadding="8dp"
-                android:textColor="@color/grey">
+                android:textColor="@color/grey"
+                android:fontFamily="@font/nunito_regular">
+            </EditText>
+
+            <EditText
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:id="@+id/signup_birthday"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:background="@drawable/white_border"
+                android:padding="8dp"
+                android:hint="birthday"
+                android:inputType="date"
+                android:maxLength="10"
+                android:drawableLeft="@drawable/logo_birthday_24"
+                android:drawablePadding="8dp"
+                android:textColor="@color/grey"
+                android:fontFamily="@font/nunito_regular">
+            </EditText>
+
+            <EditText
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:id="@+id/signup_email"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:background="@drawable/white_border"
+                android:padding="8dp"
+                android:hint="e-mail"
+                android:inputType="textEmailAddress"
+                android:drawableLeft="@drawable/logo_email_24"
+                android:drawablePadding="8dp"
+                android:textColor="@color/grey"
+                android:fontFamily="@font/nunito_regular">
+            </EditText>
+
+            <EditText
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:id="@+id/signup_password"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:background="@drawable/white_border"
+                android:padding="8dp"
+                android:hint="password"
+                android:inputType="textPassword"
+                android:drawableLeft="@drawable/logo_lock_24"
+                android:drawablePadding="8dp"
+                android:textColor="@color/grey"
+                android:fontFamily="@font/nunito_regular">
             </EditText>
 
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:id="@+id/signupPswCheckBox"
-                android:text="Show Password"
-                android:textColor="@color/lavender"
+                android:text="show password"
+                android:textColor="@color/white"
                 android:textSize="15sp"
-                android:padding="3dp"
-                android:layout_marginStart="200dp"
-                android:layout_marginTop="5dp">
+                android:padding="2dp"
+                android:layout_marginStart="180dp"
+                android:layout_marginTop="3dp"
+                android:fontFamily="@font/nunito_medium">
             </CheckBox>
 
             <EditText
-                android:layout_width="350dp"
-                android:layout_height="60dp"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
                 android:id="@+id/signup_confirm"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
                 android:background="@drawable/white_border"
                 android:padding="8dp"
-                android:hint="Confirm Password"
+                android:hint="confirm password"
                 android:inputType="textPassword"
-                android:drawableLeft="@drawable/baseline_password_24"
+                android:drawableLeft="@drawable/logo_confirm_password_24"
                 android:drawablePadding="8dp"
-                android:textColor="@color/grey">
+                android:textColor="@color/grey"
+                android:fontFamily="@font/nunito_regular">
             </EditText>
 
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:id="@+id/signupConfirmPswCheckBox"
-                android:text="Show Password"
-                android:textColor="@color/lavender"
+                android:text="show password"
+                android:textColor="@color/white"
                 android:textSize="15sp"
-                android:padding="3dp"
-                android:layout_marginStart="200dp"
-                android:layout_marginTop="5dp">
+                android:padding="2dp"
+                android:layout_marginStart="180dp"
+                android:layout_marginTop="3dp"
+                android:fontFamily="@font/nunito_medium">
             </CheckBox>
 
             <Button
-                android:layout_width="350dp"
-                android:layout_height="70dp"
+                android:layout_width="120dp"
+                android:layout_height="50dp"
                 android:layout_marginTop="30dp"
-                android:text="Sign Up"
+                android:text="sign up"
                 android:id="@+id/signup_button"
-                android:textSize="18sp"
-                app:cornerRadius = "30dp">
+                android:textSize="20sp"
+                android:textColor="@color/grey"
+                android:textAllCaps="false"
+                android:layout_gravity="center"
+                android:background="@drawable/white_border"
+                android:fontFamily="@font/nunito_bold">
             </Button>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/loginRedirectText"
-                android:text="Already an user? Login"
+                android:text="Do you have an account? Login!"
                 android:layout_gravity="center"
                 android:padding="8dp"
-                android:layout_marginTop="8dp"
-                android:textSize="18sp"
-                android:textColor="@color/lavender">
+                android:layout_marginTop="50dp"
+                android:textSize="17sp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/nunito_italic">
             </TextView>
 
         </LinearLayout>
 
     </LinearLayout>
 
-</ScrollView>
+</LinearLayout>

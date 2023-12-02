@@ -6,6 +6,10 @@ import android.os.Bundle
 import android.text.InputType
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.kaansimsek.kotlinproject.databinding.ActivityLoginBinding
 import com.kaansimsek.kotlinproject.databinding.ActivitySignupBinding
 
@@ -13,6 +17,7 @@ class SignupActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySignupBinding
     private lateinit var firebaseAuth: FirebaseAuth
+    private var db = Firebase.firestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,26 +28,62 @@ class SignupActivity : AppCompatActivity() {
 
         binding.signupButton.setOnClickListener{
 
+            val fullName = binding.signupFullname.text.toString()
+            val phoneNumber = binding.signupPhoneNumber.text.toString()
+            val birthday = binding.signupBirthday.text.toString()
             val email = binding.signupEmail.text.toString()
             val password = binding.signupPassword.text.toString()
             val confirmPassword = binding.signupConfirm.text.toString()
 
-            if(email.isNotEmpty() && password.isNotEmpty() && confirmPassword.isNotEmpty()){
+            val userMap = hashMapOf(
+                "fullName" to fullName,
+                "phoneNumber" to phoneNumber,
+                "birthday" to birthday,
+                "email" to email,
+                "password" to password
+            )
+
+            if(fullName.isNotEmpty() && phoneNumber.isNotEmpty() && birthday.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty() && confirmPassword.isNotEmpty()){
                 if(password == confirmPassword){
                     firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener{
                         if(it.isSuccessful){
+
+                            //Email Verification
+                            firebaseAuth.currentUser?.sendEmailVerification()
+                                ?.addOnSuccessListener {
+                                    Toast.makeText(this,"Please Verify your Email!",Toast.LENGTH_LONG).show()
+                                }
+                                ?.addOnFailureListener{
+                                    Toast.makeText(this,it.toString(),Toast.LENGTH_LONG).show()
+                                }
+
+                            Toast.makeText(this, "Your account has been created", Toast.LENGTH_SHORT).show()
                             val intent = Intent(this, LoginActivity::class.java)
                             startActivity(intent)
-                            Toast.makeText(this, "Your account has been created", Toast.LENGTH_SHORT).show()
+
+                            //Saving data in database
+                            val userID = FirebaseAuth.getInstance().currentUser!!.uid
+                            db.collection("users").document(userID).set(userMap)
+                                .addOnSuccessListener {
+                                    Toast.makeText(this,"Successfully added on database!", Toast.LENGTH_SHORT).show()
+                                }
+                                .addOnFailureListener {
+                                    Toast.makeText(this, "Failed!!", Toast.LENGTH_LONG).show()
+                                }
+
                         }else{
-                            Toast.makeText(this, "An account has already been created with this email!!", Toast.LENGTH_SHORT).show()
+                            if(password.length < 6){
+                                Toast.makeText(this, "Password must be 6 or more characters!!", Toast.LENGTH_LONG).show()
+                            }else{
+                                Toast.makeText(this, "An account has already been created with this email!!", Toast.LENGTH_LONG).show()
+                            }
                         }
                     }
                 }else{
-                    Toast.makeText(this, "Password does not matched!!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Password does not matched!!", Toast.LENGTH_LONG).show()
                 }
             }else{
-                Toast.makeText(this, "Fields cannot be empty!!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Fields cannot be empty!!", Toast.LENGTH_LONG).show()
             }
         }
 

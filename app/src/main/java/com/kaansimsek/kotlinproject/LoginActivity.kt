@@ -35,8 +35,15 @@ class LoginActivity : AppCompatActivity() {
             if(email.isNotEmpty() && password.isNotEmpty()){
                 firebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener{
                     if(it.isSuccessful){
-                        val intent = Intent(this,MainActivity::class.java)
-                        startActivity(intent)
+
+                        //Email Verification
+                        val verification = firebaseAuth.currentUser?.isEmailVerified
+                        if(verification == true){
+                            val intent = Intent(this,MainActivity::class.java)
+                            startActivity(intent)
+                        }else{
+                            Toast.makeText(this,"Please Verify your Email!", Toast.LENGTH_LONG).show()
+                        }
                     }else{
                         Toast.makeText(this,"Incorrect email or password!!", Toast.LENGTH_SHORT).show()
                     }
@@ -46,6 +53,7 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
+        //Forgot Password
         binding.forgotPassword.setOnClickListener{
 
             val builder = AlertDialog.Builder(this)

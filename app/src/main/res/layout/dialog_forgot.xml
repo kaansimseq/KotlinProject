@@ -50,6 +50,7 @@
             android:id="@+id/editBox"
             android:textColor="@color/grey"
             android:textSize="16sp"
+            android:inputType="textEmailAddress"
             android:layout_marginStart="20sp"
             android:backgroundTint="@color/purple"
             android:layout_marginBottom="30dp"
