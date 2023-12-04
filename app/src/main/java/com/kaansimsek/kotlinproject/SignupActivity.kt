@@ -58,7 +58,7 @@ class SignupActivity : AppCompatActivity() {
                                 }
 
                             Toast.makeText(this, "Your account has been created", Toast.LENGTH_SHORT).show()
-                            val intent = Intent(this, LoginActivity::class.java)
+                            val intent = Intent(this, VerifyEmailActivity::class.java)
                             startActivity(intent)
 
                             //Saving data in database

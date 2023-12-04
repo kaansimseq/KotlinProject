@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/purple"
-    tools:context=".LoginActivity">
+    tools:context=".VerifyEmailActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,21 +18,49 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:src="@drawable/logo"
-            android:layout_marginTop="100dp">
+            android:layout_marginTop="50dp">
         </ImageView>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="20dp"
             android:padding="20dp">
+
+            <TextView
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/verifyEmailTitle"
+                android:text="Verify Your Email"
+                android:textAlignment="center"
+                android:layout_gravity="center"
+                android:padding="8dp"
+                android:layout_marginTop="10dp"
+                android:textSize="25sp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/nunito_bold">
+            </TextView>
+
+            <TextView
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/verifyEmailText"
+                android:text="Please check your email! Click on the account verification link sent to your e-mail and verify your account."
+                android:textAlignment="center"
+                android:layout_gravity="center"
+                android:padding="8dp"
+                android:layout_marginTop="15dp"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/nunito_semibold">
+            </TextView>
 
             <EditText
                 android:layout_width="300dp"
                 android:layout_height="50dp"
-                android:id="@+id/login_email"
-                android:layout_marginTop="10dp"
+                android:id="@+id/verifyEmail"
+                android:layout_marginTop="50dp"
                 android:layout_gravity="center"
                 android:background="@drawable/white_border"
                 android:padding="8dp"
@@ -47,7 +75,7 @@
             <EditText
                 android:layout_width="300dp"
                 android:layout_height="50dp"
-                android:id="@+id/login_password"
+                android:id="@+id/verifyPassword"
                 android:layout_marginTop="20dp"
                 android:layout_gravity="center"
                 android:background="@drawable/white_border"
@@ -63,7 +91,7 @@
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:id="@+id/loginPswCheckBox"
+                android:id="@+id/verifyPswCheckBox"
                 android:text="show password"
                 android:textColor="@color/white"
                 android:textSize="15sp"
@@ -76,9 +104,9 @@
             <Button
                 android:layout_width="120dp"
                 android:layout_height="50dp"
-                android:layout_marginTop="30dp"
-                android:text="login"
-                android:id="@+id/login_button"
+                android:layout_marginTop="60dp"
+                android:text="next"
+                android:id="@+id/verifyEmailNextButton"
                 android:textSize="20sp"
                 android:textColor="@color/purple"
                 android:textAllCaps="false"
@@ -87,32 +115,8 @@
                 android:fontFamily="@font/nunito_bold">
             </Button>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/forgot_password"
-                android:layout_gravity="center"
-                android:layout_marginTop="35dp"
-                android:padding="8dp"
-                android:text="Forgot Password?"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:fontFamily="@font/nunito_semibold">
-            </TextView>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/signupRedirectText"
-                android:text="Don’t have an account? Sign up!"
-                android:layout_gravity="center"
-                android:padding="8dp"
-                android:layout_marginTop="50dp"
-                android:textSize="17sp"
-                android:textColor="@color/white"
-                android:fontFamily="@font/nunito_italic">
-            </TextView>
-
         </LinearLayout>
+
     </LinearLayout>
+
 </LinearLayout>
