@@ -12,6 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KotlinProject"
         tools:targetApi="31">
+
+        <activity
+            android:name=".PhotoAndBioActivity"
+            android:exported="false"/>
         <activity
             android:name=".VerifyEmailActivity"
             android:exported="false" />
@@ -27,6 +31,7 @@
         <activity
             android:name=".LoginActivity"
             android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

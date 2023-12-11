@@ -6,18 +6,37 @@ import android.os.Bundle
 import android.text.InputType
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.DocumentReference
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
-import com.kaansimsek.kotlinproject.databinding.ActivityLoginBinding
 import com.kaansimsek.kotlinproject.databinding.ActivitySignupBinding
 
 class SignupActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySignupBinding
     private lateinit var firebaseAuth: FirebaseAuth
-    private var db = Firebase.firestore
+
+    private var fullName: String = ""
+    private var phoneNumber: String = ""
+    private var birthday: String = ""
+    private var email: String = ""
+    private var password: String = ""
+
+    private fun getData() {
+        fullName = binding.signupFullname.text.toString()
+        phoneNumber = binding.signupPhoneNumber.text.toString()
+        birthday = binding.signupBirthday.text.toString()
+        email = binding.signupEmail.text.toString()
+        password = binding.signupPassword.text.toString()
+        nextPage()
+    }
+
+    private fun nextPage() {
+        val intent = Intent(this, PhotoAndBioActivity::class.java)
+        intent.putExtra("fullName", fullName)
+        intent.putExtra("phoneNumber", phoneNumber)
+        intent.putExtra("birthday", birthday)
+        intent.putExtra("email", email)
+        intent.putExtra("password", password)
+        startActivity(intent)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +45,7 @@ class SignupActivity : AppCompatActivity() {
 
         firebaseAuth = FirebaseAuth.getInstance()
 
-        binding.signupButton.setOnClickListener{
+        binding.signupNextButton.setOnClickListener{
 
             val fullName = binding.signupFullname.text.toString()
             val phoneNumber = binding.signupPhoneNumber.text.toString()
@@ -35,41 +54,13 @@ class SignupActivity : AppCompatActivity() {
             val password = binding.signupPassword.text.toString()
             val confirmPassword = binding.signupConfirm.text.toString()
 
-            val userMap = hashMapOf(
-                "fullName" to fullName,
-                "phoneNumber" to phoneNumber,
-                "birthday" to birthday,
-                "email" to email,
-                "password" to password
-            )
 
             if(fullName.isNotEmpty() && phoneNumber.isNotEmpty() && birthday.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty() && confirmPassword.isNotEmpty()){
                 if(password == confirmPassword){
                     firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener{
                         if(it.isSuccessful){
 
-                            //Email Verification
-                            firebaseAuth.currentUser?.sendEmailVerification()
-                                ?.addOnSuccessListener {
-                                    Toast.makeText(this,"Please Verify your Email!",Toast.LENGTH_LONG).show()
-                                }
-                                ?.addOnFailureListener{
-                                    Toast.makeText(this,it.toString(),Toast.LENGTH_LONG).show()
-                                }
-
-                            Toast.makeText(this, "Your account has been created", Toast.LENGTH_SHORT).show()
-                            val intent = Intent(this, VerifyEmailActivity::class.java)
-                            startActivity(intent)
-
-                            //Saving data in database
-                            val userID = FirebaseAuth.getInstance().currentUser!!.uid
-                            db.collection("users").document(userID).set(userMap)
-                                .addOnSuccessListener {
-                                    Toast.makeText(this,"Successfully added on database!", Toast.LENGTH_SHORT).show()
-                                }
-                                .addOnFailureListener {
-                                    Toast.makeText(this, "Failed!!", Toast.LENGTH_LONG).show()
-                                }
+                            getData()
 
                         }else{
                             if(password.length < 6){
