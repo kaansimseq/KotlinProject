@@ -88,6 +88,7 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    //Compare Email
     private fun compareEmail(email: EditText){
 
         if(email.text.toString().isEmpty()){
