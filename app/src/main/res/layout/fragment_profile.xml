@@ -1,20 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/purple"
-    tools:context=".ProfileFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="16dp">
 
-    <!-- TODO: Update blank fragment layout -->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:src="@drawable/logo"
+        android:layout_marginBottom="60dp">
+    </ImageView>
+
+
+
+        <ImageView
+            android:id="@+id/profileImageView"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop"
+            android:background="@drawable/round_shape" />
+
+
+
+
     <TextView
+        android:id="@+id/nameTextView"
+        android:text=""
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textColor="@color/white"
+        android:textAllCaps="false"
+        android:textFontWeight="400"
+        android:layout_gravity="center"
+        android:fontFamily="@font/nunito_bold"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="18dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/white_border"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Biography"
+        android:textAllCaps="false"
+        android:textColor="@color/purple"
+        android:textSize="10sp"></Button>
+
+    <TextView
+        android:id="@+id/biographyTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="PROFILE"
-        android:textSize="30sp"
-        android:layout_gravity="center">
-    </TextView>
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Biography: "
+        android:textColor="@color/white"/>
 
-</FrameLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="18dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/white_border"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Info"
+        android:textAllCaps="false"
+        android:textColor="@color/purple"
+        android:textSize="10sp"></Button>
+
+    <TextView
+        android:id="@+id/emailTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Biography: "
+        android:textColor="@color/white"/>
+
+
+
+    <TextView
+        android:id="@+id/phonenumberTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Biography: "
+        android:textColor="@color/white"/>
+
+</LinearLayout>
