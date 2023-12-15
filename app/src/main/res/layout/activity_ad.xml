@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/purple"
+
+    tools:context=".AdActivity">
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      tools:ignore="MissingConstraints">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:src="@drawable/logo"
+        android:layout_marginTop="50dp">
+    </ImageView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        android:padding="20dp">
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+          android:layout_width="365dp"
+          android:layout_height="167dp">
+
+        <TextView
+
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/nunito_bold"
+            android:padding="8dp"
+            android:text="Animal Photo"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"></TextView>
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/logo_pp"
+            android:padding="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:shapeAppearanceOverlay="@style/circular"
+            app:strokeColor="@color/white"
+            app:strokeWidth="3dp"></com.google.android.material.imageview.ShapeableImageView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/ppButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:clickable="true"
+            android:contentDescription="TODO"
+            android:focusable="true"
+            android:src="@drawable/logo_camera_24"
+            android:tint="@color/purple"
+
+            ></com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+      </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+      <EditText
+          android:layout_width="300dp"
+          android:layout_height="100dp"
+          android:layout_gravity="center"
+          android:layout_marginTop="10dp"
+          android:background="@drawable/white_border"
+          android:fontFamily="@font/nunito_regular"
+          android:gravity="top"
+          android:hint="animal bio"
+          android:inputType="textMultiLine"
+          android:maxLines="6"
+          android:padding="10dp"
+          android:textColor="@color/grey"></EditText>
+
+      <EditText
+          android:layout_width="300dp"
+          android:layout_height="50dp"
+          android:layout_marginTop="10dp"
+          android:layout_gravity="center"
+          android:gravity="top"
+          android:background="@drawable/white_border"
+          android:padding="10dp"
+          android:hint="name"
+          android:inputType="textMultiLine"
+          android:maxLines="6"
+          android:textColor="@color/grey"
+          android:fontFamily="@font/nunito_regular">
+      </EditText>
+      <EditText
+          android:layout_width="300dp"
+          android:layout_height="50dp"
+          android:layout_marginTop="10dp"
+          android:layout_gravity="center"
+          android:gravity="top"
+          android:background="@drawable/white_border"
+          android:padding="10dp"
+          android:hint="age"
+          android:inputType="textMultiLine"
+          android:maxLines="6"
+          android:textColor="@color/grey"
+          android:fontFamily="@font/nunito_regular">
+      </EditText>
+      <EditText
+          android:layout_width="300dp"
+          android:layout_height="50dp"
+          android:layout_marginTop="10dp"
+          android:layout_gravity="center"
+          android:gravity="top"
+          android:background="@drawable/white_border"
+          android:padding="10dp"
+          android:hint="race"
+          android:inputType="textMultiLine"
+          android:maxLines="6"
+          android:textColor="@color/grey"
+          android:fontFamily="@font/nunito_regular">
+      </EditText>
+      <Spinner
+          android:id="@+id/spinnerGender"
+          android:layout_width="300dp"
+          android:layout_height="50dp"
+          android:layout_marginTop="10dp"
+          android:layout_gravity="center"
+          android:gravity="top"
+          android:background="@drawable/white_border"
+          android:padding="10dp"
+          android:hint="gender"
+          android:textColor="@color/grey"
+          android:fontFamily="@font/nunito_regular"/>
+
+      <Button
+          android:layout_width="120dp"
+          android:layout_height="50dp"
+          android:layout_marginTop="40dp"
+          android:text="publish"
+          android:textSize="20sp"
+          android:textColor="@color/purple"
+          android:textAllCaps="false"
+          android:layout_gravity="center"
+          android:background="@drawable/white_border"
+          android:fontFamily="@font/nunito_bold">
+      </Button>
+
+    </LinearLayout>
+
+  </LinearLayout>
+  </androidx.constraintlayout.widget.ConstraintLayout>
