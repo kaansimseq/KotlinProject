@@ -50,6 +50,7 @@
             app:layout_constraintTop_toTopOf="parent"></TextView>
 
         <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/animalphoto"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginBottom="16dp"
@@ -80,6 +81,7 @@
 
 
       <EditText
+          android:id="@+id/biotext"
           android:layout_width="300dp"
           android:layout_height="100dp"
           android:layout_gravity="center"
@@ -94,6 +96,7 @@
           android:textColor="@color/grey"></EditText>
 
       <EditText
+          android:id="@+id/nametext"
           android:layout_width="300dp"
           android:layout_height="50dp"
           android:layout_marginTop="10dp"
@@ -108,6 +111,7 @@
           android:fontFamily="@font/nunito_regular">
       </EditText>
       <EditText
+          android:id="@+id/agetext"
           android:layout_width="300dp"
           android:layout_height="50dp"
           android:layout_marginTop="10dp"
@@ -122,6 +126,7 @@
           android:fontFamily="@font/nunito_regular">
       </EditText>
       <EditText
+          android:id="@+id/racetext"
           android:layout_width="300dp"
           android:layout_height="50dp"
           android:layout_marginTop="10dp"
@@ -149,6 +154,7 @@
           android:fontFamily="@font/nunito_regular"/>
 
       <Button
+          android:id="@+id/publishButton"
           android:layout_width="120dp"
           android:layout_height="50dp"
           android:layout_marginTop="40dp"
