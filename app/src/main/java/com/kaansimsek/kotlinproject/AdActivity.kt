@@ -22,7 +22,8 @@ import java.util.UUID
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-
+import com.google.firebase.Firebase
+import com.google.firebase.firestore.firestore
 
 
 class AdActivity : AppCompatActivity() {
@@ -31,6 +32,8 @@ class AdActivity : AppCompatActivity() {
     private val REQUEST_IMAGE_PICK = 1
     private val storage = FirebaseStorage.getInstance()
     private val storageReference = storage.reference
+    private var db = Firebase.firestore
+
 
     data class Animal(
         val name: String = "",
@@ -39,7 +42,10 @@ class AdActivity : AppCompatActivity() {
         val age: Int? = null,
         val race: String = "",
         val photoUrl: String? = null,
-        val userUid: String? = null
+        val userUid: String? = null,
+        val username: String? = null,
+        val userphonenumber: String? = null,
+        val location: String = ""
     )
 
     private var selectedImageUri: Uri? = null
@@ -87,6 +93,7 @@ class AdActivity : AppCompatActivity() {
         if (selectedImageUri != null) {
             // Fotoğrafın yükleneceği storage yolunu belirle
             val userUid = FirebaseAuth.getInstance().currentUser?.uid
+
             val photoRef = storageReference.child("animal_photos/${userUid}_${UUID.randomUUID()}.jpg")
 
             // Fotoğrafı yükle
@@ -109,34 +116,60 @@ class AdActivity : AppCompatActivity() {
     }
 
     private fun saveDataToFirebase(photoUrl: String, userUid: String?) {
-        val nameEditText = findViewById<EditText>(R.id.nametext)
-        val bioEditText = findViewById<EditText>(R.id.biotext)
-        val agetext = findViewById<EditText>(R.id.agetext)
-        val racetext = findViewById<EditText>(R.id.racetext)
-        val genderSpinner = findViewById<Spinner>(R.id.spinnerGender)
-
-        val name = nameEditText.text.toString()
-        val bio = bioEditText.text.toString()
-        val age = agetext.text.toString().toIntOrNull()
-        val race = racetext.text.toString()
-        val gender = genderSpinner.selectedItem.toString()
-
-        val animal = Animal(name, bio, gender, age, race, photoUrl, userUid)
-
-        firestore.collection("animals")
-            .add(animal)
-            .addOnSuccessListener { documentReference ->
-                // Handle success, if needed
-                // documentReference.id contains the ID of the newly added document
-                Toast.makeText(this, "İlan başarıyla eklendi", Toast.LENGTH_SHORT).show()
-                findNavController(R.id.homefragment).navigate(R.id.homefragment)
 
 
+        val userUid = FirebaseAuth.getInstance().currentUser?.uid
+
+        if (userUid != null) {
+            val ref = db.collection("users").document(userUid)
+            ref.get().addOnSuccessListener { documentSnapshot ->
+                if (documentSnapshot.exists()) {
+                    val username = documentSnapshot.getString("fullName")
+                    val userphonenumber = documentSnapshot.getString("phoneNumber")
+
+                    val nameEditText = findViewById<EditText>(R.id.nametext)
+                    val bioEditText = findViewById<EditText>(R.id.biotext)
+                    val agetext = findViewById<EditText>(R.id.agetext)
+                    val racetext = findViewById<EditText>(R.id.racetext)
+                    val locationtext = findViewById<EditText>(R.id.locationtext)
+                    val genderSpinner = findViewById<Spinner>(R.id.spinnerGender)
+
+                    val name = nameEditText.text.toString()
+                    val bio = bioEditText.text.toString()
+                    val age = agetext.text.toString().toIntOrNull()
+                    val race = racetext.text.toString()
+                    val location = locationtext.text.toString()
+                    val gender = genderSpinner.selectedItem.toString()
+
+
+                    val animal = Animal(name, bio, gender, age, race, photoUrl, userUid,username,userphonenumber,location)
+
+                    firestore.collection("animals")
+                        .add(animal)
+                        .addOnSuccessListener { documentReference ->
+                            // Handle success, if needed
+                            // documentReference.id contains the ID of the newly added document
+                            Toast.makeText(this, "İlan başarıyla eklendi", Toast.LENGTH_SHORT).show()
+                            findNavController(R.id.homefragment).navigate(R.id.homefragment)
+
+
+                        }
+                        .addOnFailureListener { e ->
+                            // Handle failure
+                            Toast.makeText(this, "İlan eklenirken hata oluştu", Toast.LENGTH_SHORT).show()
+                        }
+                // Now, you can use 'username' and 'userphonenumber' as needed
+                    // For example, you can use them to construct the 'Animal' object
+
+                    // Continue with the rest of your logic...
+                }
+            }.addOnFailureListener { e ->
+                // Handle failures, such as Firestore errors
             }
-            .addOnFailureListener { e ->
-                // Handle failure
-                Toast.makeText(this, "İlan eklenirken hata oluştu", Toast.LENGTH_SHORT).show()
-            }
+        }
+
+
+
     }
 
 
