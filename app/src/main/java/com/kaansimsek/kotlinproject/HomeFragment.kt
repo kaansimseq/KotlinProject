@@ -12,6 +12,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.compose.ui.text.toUpperCase
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.google.firebase.firestore.FirebaseFirestore
@@ -58,6 +59,9 @@ class HomeFragment : Fragment() {
                     val animalLocation = document.getString("location")
                     val animalAge = document.getLong("age")
                     val photoUrl = document.getString("photoUrl")
+                    val ad_id = document.id
+                    val cardview_id = ad_id.hashCode()
+                    val string_cardview_id = cardview_id.toString()
 
                     // CardView oluştur
                     val cardView = CardView(requireContext())
@@ -100,7 +104,7 @@ class HomeFragment : Fragment() {
                     horizontalLayout.addView(textInfoLayout)
 
                     val nameTextView = TextView(requireContext())
-                    nameTextView.text = "$animalName"
+                    nameTextView.text = "${animalName?.toUpperCase()}"
                     nameTextView.textSize = 28f // Yazı boyutunu ayarlayın
                     nameTextView.setTextColor(Color.parseColor("#6B5172")) // Renk kodunu ayarlayın
                     nameTextView.gravity = Gravity.CENTER // TextView'yi ortalamak için gravity ekleyin
@@ -120,13 +124,28 @@ class HomeFragment : Fragment() {
                     locationTextView.gravity = Gravity.CENTER // TextView'yi ortalamak için gravity ekleyin
                     textInfoLayout.addView(locationTextView)
 
+                    cardView.setOnClickListener {
+                        showAdDetails(string_cardview_id)
+                    }
 
                     // ContainerLayout'a CardView'ı ekle
+
                     containerLayout.addView(cardView)
+
+
+
                 }
             } catch (e: Exception) {
                 // Hata durumunda işlemler
             }
         }
+    }
+
+    private fun showAdDetails(cardId: String) {
+        // Kart tıklandığında yapılacak işlemleri buraya ekleyin
+        // Örneğin, tıklanan kartın ID'sini kullanarak detay sayfasına yönlendirebilirsiniz.
+        val intent = Intent(requireContext(), AdDetailActivity::class.java)
+        intent.putExtra("cardId", cardId)
+        startActivity(intent)
     }
 }
