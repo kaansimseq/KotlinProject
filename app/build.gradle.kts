@@ -8,6 +8,10 @@ android {
     namespace = "com.kaansimsek.kotlinproject"
     compileSdk = 34
 
+    packagingOptions {
+        exclude ("META-INF/INDEX.LIST")
+        exclude ("META-INF/proguard/androidx-annotations.pro")
+    }
     defaultConfig {
         applicationId = "com.kaansimsek.kotlinproject"
         minSdk = 24
@@ -50,6 +54,7 @@ dependencies {
     implementation("com.google.firebase:firebase-firestore:24.9.1")
     implementation("com.google.firebase:firebase-storage:20.3.0")
     implementation("com.google.firebase:firebase-database-ktx:20.3.0")
+    implementation("androidx.compose.ui:ui-android:1.5.4")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
@@ -58,5 +63,7 @@ dependencies {
     implementation("com.github.dhaval2404:imagepicker:2.1")
     implementation ("androidx.navigation:navigation-fragment-ktx:2.3.5")
     implementation ("androidx.navigation:navigation-ui-ktx:2.3.5")
+    implementation ("com.github.bumptech.glide:glide:4.12.0")
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.12.0")
 
 }

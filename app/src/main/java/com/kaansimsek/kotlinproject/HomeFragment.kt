@@ -1,45 +1,36 @@
 package com.kaansimsek.kotlinproject
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import androidx.navigation.Navigation.findNavController
-import androidx.navigation.fragment.findNavController
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.TextView
+import androidx.cardview.widget.CardView
+import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
+import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [HomeFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class HomeFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var containerLayout: LinearLayout
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
-
         val button = view.findViewById<Button>(R.id.btnNavigateToActivityAd)
+        containerLayout = view.findViewById(R.id.containerLayout)
 
         button.setOnClickListener {
             val intent = Intent(requireContext(), AdActivity::class.java)
@@ -49,23 +40,93 @@ class HomeFragment : Fragment() {
         return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment HomeFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            HomeFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // Firestore'dan verileri al ve arayüzü güncelle
+        fetchDataAndPopulateUI()
+    }
+
+    private fun fetchDataAndPopulateUI() {
+        val db = FirebaseFirestore.getInstance()
+
+        GlobalScope.launch(Dispatchers.Main) {
+            try {
+                val querySnapshot = db.collection("animals").get().await()
+                for (document in querySnapshot.documents) {
+                    val animalName = document.getString("name")
+                    val animalLocation = document.getString("location")
+                    val animalAge = document.getLong("age")
+                    val photoUrl = document.getString("photoUrl")
+
+                    // CardView oluştur
+                    val cardView = CardView(requireContext())
+                    val layoutParams = LinearLayout.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT
+                    )
+                    layoutParams.setMargins(0, 0, 0, 16)
+                    cardView.layoutParams = layoutParams
+                    cardView.radius = 8f
+                    cardView.cardElevation = 8f
+
+                    // Horizontal LinearLayout oluştur
+                    val horizontalLayout = LinearLayout(requireContext())
+                    horizontalLayout.orientation = LinearLayout.HORIZONTAL
+                    cardView.addView(horizontalLayout)
+
+                    // ImageView oluştur ve ayarla
+                    val imageView = ImageView(requireContext())
+                    val imageLayoutParams = LinearLayout.LayoutParams(
+                        300,
+                        300,
+                    )
+                    imageLayoutParams.setMargins(64, 64, 64, 64) // Sağdan, soldan, yukarıdan, aşağıdan padding ayarlayın
+                    imageView.layoutParams = imageLayoutParams
+                    imageView.scaleType = ImageView.ScaleType.CENTER_CROP
+                    Glide.with(requireContext())
+                        .load(photoUrl)
+                        .into(imageView)
+                    horizontalLayout.addView(imageView)
+
+// Dikey LinearLayout oluştur
+                    val textInfoLayout = LinearLayout(requireContext())
+                    textInfoLayout.orientation = LinearLayout.VERTICAL
+                    textInfoLayout.layoutParams = LinearLayout.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.MATCH_PARENT
+                    )
+                    textInfoLayout.gravity = Gravity.CENTER_VERTICAL // Dikey olarak ortalamak için gravity ekleyin
+                    horizontalLayout.addView(textInfoLayout)
+
+                    val nameTextView = TextView(requireContext())
+                    nameTextView.text = "$animalName"
+                    nameTextView.textSize = 28f // Yazı boyutunu ayarlayın
+                    nameTextView.setTextColor(Color.parseColor("#6B5172")) // Renk kodunu ayarlayın
+                    nameTextView.gravity = Gravity.CENTER // TextView'yi ortalamak için gravity ekleyin
+                    textInfoLayout.addView(nameTextView)
+
+                    val ageTextView = TextView(requireContext())
+                    ageTextView.text = "$animalAge years old"
+                    ageTextView.textSize = 24f // Yazı boyutunu ayarlayın
+                    ageTextView.setTextColor(Color.parseColor("#6B5172")) // Renk kodunu ayarlayın
+                    ageTextView.gravity = Gravity.CENTER // TextView'yi ortalamak için gravity ekleyin
+                    textInfoLayout.addView(ageTextView)
+
+                    val locationTextView = TextView(requireContext())
+                    locationTextView.text = "$animalLocation"
+                    locationTextView.textSize = 24f // Yazı boyutunu ayarlayın
+                    locationTextView.setTextColor(Color.parseColor("#6B5172")) // Renk kodunu ayarlayın
+                    locationTextView.gravity = Gravity.CENTER // TextView'yi ortalamak için gravity ekleyin
+                    textInfoLayout.addView(locationTextView)
+
+
+                    // ContainerLayout'a CardView'ı ekle
+                    containerLayout.addView(cardView)
                 }
+            } catch (e: Exception) {
+                // Hata durumunda işlemler
             }
+        }
     }
 }
