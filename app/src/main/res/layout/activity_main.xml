@@ -28,7 +28,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:background="@color/purple"
-        app:menu="@menu/bottom_nav">
+        app:menu="@menu/bottom_nav"
+        app:labelVisibilityMode="unlabeled"
+        app:itemIconSize="35dp">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 
