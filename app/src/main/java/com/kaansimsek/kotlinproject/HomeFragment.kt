@@ -125,7 +125,7 @@ class HomeFragment : Fragment() {
                     textInfoLayout.addView(locationTextView)
 
                     cardView.setOnClickListener {
-                        showAdDetails(string_cardview_id)
+                        showAdDetails(ad_id)
                     }
 
                     // ContainerLayout'a CardView'ı ekle

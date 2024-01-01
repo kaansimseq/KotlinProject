@@ -1,9 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
     tools:context=".AdDetailActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginBottom="6dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        android:src="@drawable/logo"
+        android:background="@color/purple"
+        ></ImageView>
+
+    <ImageView
+        android:id="@+id/AnimalImageView"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="16dp"
+         />
+
+    <TextView
+        android:id="@+id/AnimalName"
+        android:text=""
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textColor="@color/purple"
+        android:textAllCaps="false"
+        android:textFontWeight="400"
+        android:layout_gravity="center"
+        android:fontFamily="@font/nunito_bold"
+        />
+
+
+
+    <Button
+        android:layout_gravity="center"
+        android:id="@+id/AnimalBio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:background="@drawable/purple_border"
+        android:fontFamily="@font/nunito_bold"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:padding="16dp"></Button>
+    <TextView
+        android:id="@+id/AnimalAge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Animal Age"
+        android:layout_marginLeft="16dp"
+        android:textColor="@color/purple"
+        android:fontFamily="@font/nunito_bold"
+        android:textSize="20sp"
+        />
+    <TextView
+        android:id="@+id/AnimalGender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Animal Gender"
+        android:layout_marginLeft="16dp"
+        android:textColor="@color/purple"
+        android:fontFamily="@font/nunito_bold"
+        android:textSize="20sp"/>
+
+
+    <TextView
+        android:id="@+id/AnimalRace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Animal Race"
+        android:layout_marginLeft="16dp"
+        android:textColor="@color/purple"
+        android:fontFamily="@font/nunito_bold"
+        android:textSize="20sp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/purple_border"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Info"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="15sp"></Button>
+
+    <TextView
+        android:id="@+id/AnimalLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Animal Location"
+        android:layout_marginLeft="16dp"
+        android:textColor="@color/purple"
+        android:fontFamily="@font/nunito_bold"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:id="@+id/AnimalOwner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Animal Owner"
+        android:layout_marginLeft="16dp"
+        android:textColor="@color/purple"
+        android:fontFamily="@font/nunito_bold"
+        android:textSize="20sp"/>
+    <TextView
+        android:id="@+id/AnimalOwnerPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Animal Owner Phone"
+        android:layout_marginLeft="16dp"
+        android:textColor="@color/purple"
+        android:fontFamily="@font/nunito_bold"
+        android:textSize="20sp"/>
+
+</LinearLayout>

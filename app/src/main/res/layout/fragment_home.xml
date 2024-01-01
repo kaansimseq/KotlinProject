@@ -9,20 +9,41 @@
     android:background="@color/purple"
     tools:context=".HomeFragment">
 
-    <Button
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginRight="10dp"
-        android:text="+"
-        android:id="@+id/btnNavigateToActivityAd"
-        android:textSize="30sp"
-        android:textColor="@color/purple"
-        android:textAllCaps="false"
-        android:layout_gravity="right"
-        android:background="@drawable/white_border"
-        android:fontFamily="@font/nunito_bold">
-    </Button>
+        android:layout_marginBottom="20dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="13dp"
+            android:layout_marginLeft="23dp"
+            android:layout_marginTop="3dp"
+            android:src="@drawable/logo"></ImageView>
+
+        <Button
+            android:id="@+id/btnNavigateToActivityAd"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="22dp"
+            android:layout_marginRight="22dp"
+            android:background="@drawable/white_border"
+            android:fontFamily="@font/nunito_bold"
+            android:text="+"
+            android:textAllCaps="false"
+            android:textColor="@color/purple"
+            android:textSize="30sp"></Button>
+
+    </RelativeLayout>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -34,7 +55,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingTop="16dp">
+            >
             <!-- CardViews will be added dynamically here -->
         </LinearLayout>
 
