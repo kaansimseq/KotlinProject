@@ -68,7 +68,7 @@
                 android:inputType="textEmailAddress"
                 android:drawableLeft="@drawable/logo_email_24"
                 android:drawablePadding="8dp"
-                android:textColor="@color/grey"
+                android:textColor="@color/purple"
                 android:fontFamily="@font/nunito_regular">
             </EditText>
 
@@ -84,7 +84,7 @@
                 android:inputType="textPassword"
                 android:drawableLeft="@drawable/logo_lock_24"
                 android:drawablePadding="8dp"
-                android:textColor="@color/grey"
+                android:textColor="@color/purple"
                 android:fontFamily="@font/nunito_regular">
             </EditText>
 

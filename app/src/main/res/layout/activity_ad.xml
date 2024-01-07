@@ -21,24 +21,24 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="25dp"
+        android:layout_height="50dp"
         android:src="@drawable/logo"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="5dp">
     </ImageView>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="2dp"
         android:padding="20dp">
 
       <androidx.constraintlayout.widget.ConstraintLayout
-          android:layout_width="365dp"
-          android:layout_height="167dp">
+          android:layout_width="match_parent"
+          android:layout_height="190dp">
 
         <TextView
-
+            android:id="@+id/textView"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -47,16 +47,17 @@
             android:text="Animal Photo"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="20sp"
+            android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"></TextView>
+            app:layout_constraintTop_toTopOf="parent">
+        </TextView>
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/animalphoto"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
             android:layout_marginBottom="16dp"
             android:background="@drawable/logo_pp"
             android:padding="5dp"
@@ -66,7 +67,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:shapeAppearanceOverlay="@style/circular"
             app:strokeColor="@color/white"
-            app:strokeWidth="3dp"></com.google.android.material.imageview.ShapeableImageView>
+            app:strokeWidth="3dp">
+        </com.google.android.material.imageview.ShapeableImageView>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/ppButton"
@@ -78,8 +80,9 @@
             android:focusable="true"
             android:src="@drawable/logo_camera_24"
             android:tint="@color/purple"
-
-            ></com.google.android.material.floatingactionbutton.FloatingActionButton>
+            app:layout_constraintBottom_toBottomOf="@+id/animalphoto"
+            app:layout_constraintEnd_toEndOf="@+id/animalphoto">
+        </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
       </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -93,11 +96,12 @@
           android:background="@drawable/white_border"
           android:fontFamily="@font/nunito_regular"
           android:gravity="top"
-          android:hint="animal bio"
+          android:hint="biography"
           android:inputType="textMultiLine"
           android:maxLines="6"
           android:padding="10dp"
-          android:textColor="@color/grey"></EditText>
+          android:textColor="@color/purple">
+      </EditText>
 
       <EditText
           android:id="@+id/nametext"
@@ -111,9 +115,10 @@
           android:hint="name"
           android:inputType="textMultiLine"
           android:maxLines="6"
-          android:textColor="@color/grey"
+          android:textColor="@color/purple"
           android:fontFamily="@font/nunito_regular">
       </EditText>
+
       <EditText
           android:id="@+id/agetext"
           android:layout_width="300dp"
@@ -126,9 +131,10 @@
           android:hint="age"
           android:inputType="textMultiLine"
           android:maxLines="6"
-          android:textColor="@color/grey"
+          android:textColor="@color/purple"
           android:fontFamily="@font/nunito_regular">
       </EditText>
+
       <EditText
           android:id="@+id/racetext"
           android:layout_width="300dp"
@@ -141,9 +147,10 @@
           android:hint="race"
           android:inputType="textMultiLine"
           android:maxLines="6"
-          android:textColor="@color/grey"
+          android:textColor="@color/purple"
           android:fontFamily="@font/nunito_regular">
       </EditText>
+
       <Spinner
           android:id="@+id/spinnerGender"
           android:layout_width="300dp"
@@ -154,8 +161,9 @@
           android:background="@drawable/white_border"
           android:padding="10dp"
           android:hint="gender"
-          android:textColor="@color/grey"
+          android:textColor="@color/purple"
           android:fontFamily="@font/nunito_regular"/>
+
       <EditText
           android:id="@+id/locationtext"
           android:layout_width="300dp"
@@ -168,7 +176,7 @@
           android:hint="location"
           android:inputType="textMultiLine"
           android:maxLines="6"
-          android:textColor="@color/grey"
+          android:textColor="@color/purple"
           android:fontFamily="@font/nunito_regular">
       </EditText>
 
@@ -176,7 +184,7 @@
           android:id="@+id/publishButton"
           android:layout_width="120dp"
           android:layout_height="50dp"
-          android:layout_marginTop="40dp"
+          android:layout_marginTop="10dp"
           android:layout_marginBottom="40dp"
           android:text="publish"
           android:textSize="20sp"

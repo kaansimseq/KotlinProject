@@ -1,27 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:background="@color/purple"
     android:padding="16dp">
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:src="@drawable/logo"
-        android:layout_marginBottom="60dp">
+        android:layout_marginBottom="60dp"
+        android:layout_marginTop="20dp">
     </ImageView>
 
 
 
-        <ImageView
-            android:id="@+id/profileImageView"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_gravity="center"
-            android:scaleType="centerCrop"
-            android:background="@drawable/round_shape" />
+    <ImageView
+        android:id="@+id/profileImageView"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:scaleType="centerCrop"
+        android:background="@drawable/round_shape"/>
 
 
 
@@ -31,7 +34,7 @@
         android:text=""
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:textAlignment="center"
         android:textSize="30sp"
         android:textColor="@color/white"
@@ -42,15 +45,16 @@
         />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="18dp"
-        android:layout_marginTop="30dp"
+        android:layout_width="120dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/white_border"
         android:fontFamily="@font/nunito_bold"
         android:text="Biography"
         android:textAllCaps="false"
         android:textColor="@color/purple"
-        android:textSize="10sp"></Button>
+        android:textSize="17sp">
+    </Button>
 
     <TextView
         android:id="@+id/biographyTextView"
@@ -59,18 +63,21 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:text="Biography: "
-        android:textColor="@color/white"/>
+        android:textSize="15sp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/nunito_semibold"/>
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="18dp"
-        android:layout_marginTop="30dp"
+        android:layout_width="120dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/white_border"
         android:fontFamily="@font/nunito_bold"
         android:text="Info"
         android:textAllCaps="false"
         android:textColor="@color/purple"
-        android:textSize="10sp"></Button>
+        android:textSize="17sp">
+    </Button>
 
     <TextView
         android:id="@+id/emailTextView"
@@ -78,8 +85,10 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:text="Biography: "
-        android:textColor="@color/white"/>
+        android:text="Email: "
+        android:textSize="15sp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/nunito_semibold"/>
 
 
 
@@ -89,14 +98,16 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:text="Biography: "
-        android:textColor="@color/white"/>
+        android:text="Call: "
+        android:textSize="15sp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/nunito_semibold"/>
 
     <Button
         android:id="@+id/exitButton"
         android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_marginTop="30dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="40dp"
         android:layout_gravity="center"
         android:background="@drawable/red_border"
         android:fontFamily="@font/nunito_bold"

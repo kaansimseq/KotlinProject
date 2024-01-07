@@ -108,7 +108,7 @@
                 android:hint="biography"
                 android:inputType="textMultiLine"
                 android:maxLines="6"
-                android:textColor="@color/grey"
+                android:textColor="@color/purple"
                 android:fontFamily="@font/nunito_regular">
             </EditText>
 
