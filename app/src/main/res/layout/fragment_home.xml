@@ -28,20 +28,16 @@
 
         <Button
             android:id="@+id/btnNavigateToActivityAd"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="9dp"
             android:layout_marginEnd="22dp"
             android:layout_marginRight="22dp"
-            android:background="@drawable/white_border"
-            android:fontFamily="@font/nunito_bold"
-            android:text="+"
-            android:textAllCaps="false"
-            android:textColor="@color/purple"
-            android:textSize="30sp"></Button>
+            android:background="@drawable/logo_add_animal">
+        </Button>
 
     </RelativeLayout>
 

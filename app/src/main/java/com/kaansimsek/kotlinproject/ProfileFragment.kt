@@ -12,6 +12,9 @@ import android.os.AsyncTask
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
@@ -51,11 +54,17 @@ class ProfileFragment : Fragment() {
     ): View? {
 
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
-        val button = view.findViewById<Button>(R.id.exitButton)
+        val button = view.findViewById<Button>(R.id.btnExit)
+        val infoButton = view.findViewById<Button>(R.id.btnInfo)
 
         button.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
             val intent = Intent(requireContext(), LoginActivity::class.java)
+            startActivity(intent)
+        }
+
+        infoButton.setOnClickListener {
+            val intent = Intent(requireContext(), InfoActivity::class.java)
             startActivity(intent)
         }
 
@@ -136,6 +145,7 @@ class ProfileFragment : Fragment() {
 
         return roundedBitmap
     }
+
 }
 
 

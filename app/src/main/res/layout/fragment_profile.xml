@@ -8,14 +8,50 @@
     android:background="@color/purple"
     android:padding="16dp">
 
-    <ImageView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:src="@drawable/logo"
-        android:layout_marginBottom="60dp"
-        android:layout_marginTop="20dp">
-    </ImageView>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp">
 
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="13dp"
+            android:layout_marginLeft="23dp"
+            android:layout_marginTop="3dp"
+            android:src="@drawable/logo">
+        </ImageView>
+
+        <Button
+            android:id="@+id/btnInfo"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="9dp"
+            android:layout_marginEnd="55dp"
+            android:background="@drawable/logo_info_24">
+        </Button>
+
+        <Button
+            android:id="@+id/btnExit"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="9dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/logo_exit_btn_24">
+        </Button>
+
+    </RelativeLayout>
 
 
     <ImageView
@@ -24,7 +60,8 @@
         android:layout_height="150dp"
         android:layout_gravity="center"
         android:scaleType="centerCrop"
-        android:background="@drawable/round_shape"/>
+        android:background="@drawable/round_shape"
+        android:layout_marginTop="30dp"/>
 
 
 
@@ -102,18 +139,5 @@
         android:textSize="15sp"
         android:textColor="@color/white"
         android:fontFamily="@font/nunito_semibold"/>
-
-    <Button
-        android:id="@+id/exitButton"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_marginTop="40dp"
-        android:layout_gravity="center"
-        android:background="@drawable/red_border"
-        android:fontFamily="@font/nunito_bold"
-        android:text="exit"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="20sp" />
 
 </LinearLayout>

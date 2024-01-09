@@ -30,7 +30,8 @@
         android:background="@color/purple"
         app:menu="@menu/bottom_nav"
         app:labelVisibilityMode="unlabeled"
-        app:itemIconSize="35dp">
+        app:itemIconSize="35dp"
+        app:itemIconTint="@color/icons_color">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 
