@@ -36,6 +36,7 @@ class VerifyEmailActivity : AppCompatActivity() {
                             Toast.makeText(this, "Your account has been created", Toast.LENGTH_SHORT).show()
                             val intent = Intent(this,AppDesc1Activity::class.java)
                             startActivity(intent)
+
                         }else{
                             Toast.makeText(this,"Please Verify your Email!", Toast.LENGTH_SHORT).show()
                         }
@@ -60,5 +61,4 @@ class VerifyEmailActivity : AppCompatActivity() {
         }
 
     }
-
 }

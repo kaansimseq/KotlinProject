@@ -15,6 +15,7 @@ class AppDesc1Activity : AppCompatActivity() {
         binding = ActivityAppDesc1Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //Page transition (AppDesc2Activity)
         binding.nextButton1.setOnClickListener{
             val intent = Intent(this,AppDesc2Activity::class.java)
             startActivity(intent)

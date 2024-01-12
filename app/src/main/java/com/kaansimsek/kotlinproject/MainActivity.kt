@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    //Uygulama içinde farklı ekranlar arasında geçiş yapmayı sağlar
     private fun replaceFragment(fragment: Fragment){
 
         val fragmentManager = supportFragmentManager
