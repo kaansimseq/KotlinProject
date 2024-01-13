@@ -147,24 +147,18 @@ class AdActivity : AppCompatActivity() {
                     firestore.collection("animals")
                         .add(animal)
                         .addOnSuccessListener { documentReference ->
-                            // Handle success, if needed
-                            // documentReference.id contains the ID of the newly added document
+
                             Toast.makeText(this, "İlan başarıyla eklendi", Toast.LENGTH_SHORT).show()
                             findNavController(R.id.homefragment).navigate(R.id.homefragment)
 
 
                         }
                         .addOnFailureListener { e ->
-                            // Handle failure
                             Toast.makeText(this, "İlan eklenirken hata oluştu", Toast.LENGTH_SHORT).show()
                         }
-                // Now, you can use 'username' and 'userphonenumber' as needed
-                    // For example, you can use them to construct the 'Animal' object
 
-                    // Continue with the rest of your logic...
                 }
             }.addOnFailureListener { e ->
-                // Handle failures, such as Firestore errors
             }
         }
 

@@ -2,6 +2,7 @@ package com.kaansimsek.kotlinproject
 
 import android.content.Intent
 import android.graphics.Color
+import android.graphics.Typeface
 import android.os.Bundle
 import android.view.Gravity
 import android.view.LayoutInflater
@@ -56,7 +57,8 @@ class HomeFragment : Fragment() {
                 val querySnapshot = db.collection("animals").get().await()
                 for (document in querySnapshot.documents) {
                     val animalName = document.getString("name")
-                    val animalLocation = document.getString("location")
+                    val animalgender = document.getString("gender")
+                    val animalrace = document.getString("race")
                     val animalAge = document.getLong("age")
                     val photoUrl = document.getString("photoUrl")
                     val ad_id = document.id
@@ -69,9 +71,8 @@ class HomeFragment : Fragment() {
                         ViewGroup.LayoutParams.MATCH_PARENT,
                         ViewGroup.LayoutParams.WRAP_CONTENT
                     )
-                    layoutParams.setMargins(0, 0, 0, 16)
+                    layoutParams.setMargins(0, 0, 0, 3)
                     cardView.layoutParams = layoutParams
-                    cardView.radius = 8f
                     cardView.cardElevation = 8f
 
                     // Horizontal LinearLayout oluştur
@@ -82,10 +83,10 @@ class HomeFragment : Fragment() {
                     // ImageView oluştur ve ayarla
                     val imageView = ImageView(requireContext())
                     val imageLayoutParams = LinearLayout.LayoutParams(
-                        300,
-                        300,
+                        350,
+                        350,
                     )
-                    imageLayoutParams.setMargins(64, 64, 64, 64) // Sağdan, soldan, yukarıdan, aşağıdan padding ayarlayın
+                    imageLayoutParams.setMargins(124, 144, 144, 144) // Sağdan, soldan, yukarıdan, aşağıdan padding ayarlayın
                     imageView.layoutParams = imageLayoutParams
                     imageView.scaleType = ImageView.ScaleType.CENTER_CROP
                     Glide.with(requireContext())
@@ -104,29 +105,65 @@ class HomeFragment : Fragment() {
                     horizontalLayout.addView(textInfoLayout)
 
                     val nameTextView = TextView(requireContext())
-                    nameTextView.text = "${animalName?.toUpperCase()}"
-                    nameTextView.textSize = 28f // Yazı boyutunu ayarlayın
+                    nameTextView.setPadding(0, 12, 0, 12)
+                    nameTextView.text = "${animalName}"
+                    nameTextView.textSize = 25f // Yazı boyutunu ayarlayın
+                    nameTextView.setTypeface(null, Typeface.BOLD) // Kalın yapmak için setTypeface kullanın
                     nameTextView.setTextColor(Color.parseColor("#6B5172")) // Renk kodunu ayarlayın
-                    nameTextView.gravity = Gravity.CENTER // TextView'yi ortalamak için gravity ekleyin
+                    nameTextView.gravity = Gravity.LEFT // TextView'yi ortalamak için gravity ekleyin
                     textInfoLayout.addView(nameTextView)
 
                     val ageTextView = TextView(requireContext())
-                    ageTextView.text = "$animalAge years old"
-                    ageTextView.textSize = 24f // Yazı boyutunu ayarlayın
+                    ageTextView.text = "· $animalAge years "
+                    ageTextView.textSize = 18f // Yazı boyutunu ayarlayın
                     ageTextView.setTextColor(Color.parseColor("#6B5172")) // Renk kodunu ayarlayın
-                    ageTextView.gravity = Gravity.CENTER // TextView'yi ortalamak için gravity ekleyin
+                    ageTextView.gravity = Gravity.LEFT // TextView'yi ortalamak için gravity ekleyin
                     textInfoLayout.addView(ageTextView)
 
-                    val locationTextView = TextView(requireContext())
-                    locationTextView.text = "$animalLocation"
-                    locationTextView.textSize = 24f // Yazı boyutunu ayarlayın
-                    locationTextView.setTextColor(Color.parseColor("#6B5172")) // Renk kodunu ayarlayın
-                    locationTextView.gravity = Gravity.CENTER // TextView'yi ortalamak için gravity ekleyin
-                    textInfoLayout.addView(locationTextView)
+                    val genderTextView = TextView(requireContext())
+                    genderTextView.text = "· $animalgender"
+                    genderTextView.textSize = 18f // Yazı boyutunu ayarlayın
+                    genderTextView.setTextColor(Color.parseColor("#6B5172")) // Renk kodunu ayarlayın
+                    genderTextView.gravity = Gravity.LEFT // TextView'yi ortalamak için gravity ekleyin
+                    textInfoLayout.addView(genderTextView)
 
-                    cardView.setOnClickListener {
+                    val raceTextView = TextView(requireContext())
+                    raceTextView.text = "· $animalrace"
+                    raceTextView.textSize = 18f // Yazı boyutunu ayarlayın
+                    raceTextView.setTextColor(Color.parseColor("#6B5172")) // Renk kodunu ayarlayın
+                    raceTextView.gravity = Gravity.LEFT // TextView'yi ortalamak için gravity ekleyin
+                    textInfoLayout.addView(raceTextView)
+
+                    val detailsButton = TextView(requireContext())
+
+// Details butonunun genişlik ve yüksekliğini, içindeki metne göre otomatik olarak ayarlayın
+                    detailsButton.text = "Details"
+                    detailsButton.textSize = 18f
+                    detailsButton.setTextColor(Color.parseColor("#FFFFFF"))
+                    detailsButton.setBackgroundResource(R.drawable.green_border) // Kendi tasarımınıza uygun bir background ekleyebilirsiniz
+
+// Soldan ve sağdan 8 dp'lik padding ayarlayın
+                    detailsButton.setPadding(65, 5, 65, 5)
+                    detailsButton.paddingRight
+// Yazıyı ortalamak için gravity'yi ayarlayın
+                    detailsButton.gravity = Gravity.CENTER
+
+                    detailsButton.setOnClickListener {
+                        // Details butonuna tıklandığında yapılacak işlemler
                         showAdDetails(ad_id)
                     }
+                    val marginLayoutParams = LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.WRAP_CONTENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT
+                    )
+
+// Sol, üst, sağ, alt sırasıyla margin değerlerini ayarla
+                    marginLayoutParams.setMargins(0, 16, 8, 0)  // Örnekte sağa 16dp margin eklenmiştir
+
+// LayoutParams'i TextView'e uygula
+                    detailsButton.layoutParams = marginLayoutParams
+                    textInfoLayout.addView(detailsButton)
+
 
                     // ContainerLayout'a CardView'ı ekle
 
