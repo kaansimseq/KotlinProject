@@ -26,6 +26,7 @@ class PhotoAndBioActivity : AppCompatActivity() {
     private var biography: String = ""
     private var imageUri: Uri? = null
 
+    //Saving data in database
     private fun saveDatabase(fullName: String?, phoneNumber: String?, birthday: String?, email: String?, password: String?, biography: String, imageUri: Uri?){
 
         val userMap = hashMapOf(
@@ -37,7 +38,6 @@ class PhotoAndBioActivity : AppCompatActivity() {
             "biography" to biography
         )
 
-        //Saving data in database
         val userID = FirebaseAuth.getInstance().currentUser!!.uid
         db.collection("users").document(userID).set(userMap)
             .addOnSuccessListener {
@@ -47,7 +47,7 @@ class PhotoAndBioActivity : AppCompatActivity() {
                 Toast.makeText(this, "Failed!!", Toast.LENGTH_SHORT).show()
             }
 
-        // Profil resmini Firebase Storage'a yükleme işlemi
+        // Profil resmini Firebase Storage'a yükleme
         if (imageUri != null) {
             saveImageToStorage(userID, imageUri)
         }
@@ -58,17 +58,15 @@ class PhotoAndBioActivity : AppCompatActivity() {
         // Firebase Storage referansı oluşturma
         val storageReference = FirebaseStorage.getInstance().reference.child("profile_images/$userID.jpg")
 
-        // Resmi yükleme işlemi
+        // Resmi yükleme
         storageReference.putFile(imageUri)
             .addOnSuccessListener { taskSnapshot ->
-                // Resim yükleme başarılı olduğunda yapılacak işlemler
                 taskSnapshot.storage.downloadUrl.addOnSuccessListener { uri ->
-                    // Resim URL'sini al ve Firestore'a kaydet
+                    // Resim URL'sini alır ve Firestore'a kaydeder
                     saveImageUrlToDatabase(userID, uri.toString())
                 }
             }
             .addOnFailureListener {
-                // Resim yükleme başarısız olduğunda yapılacak işlemler
                 Toast.makeText(this, "Failed to upload image!", Toast.LENGTH_SHORT).show()
             }
     }
@@ -79,15 +77,15 @@ class PhotoAndBioActivity : AppCompatActivity() {
             .update("imageUrl", imageUrl)
     }
 
-    //PP Image
+    //Profile Photo
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (resultCode == Activity.RESULT_OK) {
-            // Seçilen resmin URI'sini al
+            // Seçilen resmin URI'sini alır
             imageUri = data?.data
 
-            // ImageView'e resmi göster
+            // ImageView'e resmi gösterir
             binding.ppImage.setImageURI(imageUri)
         }
     }
@@ -107,6 +105,7 @@ class PhotoAndBioActivity : AppCompatActivity() {
         val email = intent.getStringExtra("email")
         val password = intent.getStringExtra("password")
 
+        //ImagePicker kütüphanesi sayesinde resim seçmeyi ve uygulamada kullanmamızı sağlar
         binding.ppButton.setOnClickListener{
             ImagePicker.with(this)
                 .crop(1f,1f)	    	            //Crop image(Optional), Check Customization for more option
@@ -121,6 +120,7 @@ class PhotoAndBioActivity : AppCompatActivity() {
 
             if(biography.isNotEmpty() && imageUri != null){
 
+                //Verileri alır database kaydeder
                 saveDatabase(fullName,phoneNumber,birthday,email,password,biography,imageUri)
 
                 //Email Verification

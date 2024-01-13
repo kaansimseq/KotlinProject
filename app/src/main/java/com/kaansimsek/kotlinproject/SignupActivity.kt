@@ -19,6 +19,7 @@ class SignupActivity : AppCompatActivity() {
     private var email: String = ""
     private var password: String = ""
 
+    //Retrieves data and moves it to the next page(PhotoAndBioActivity)
     private fun getData() {
         fullName = binding.signupFullname.text.toString()
         phoneNumber = binding.signupPhoneNumber.text.toString()
@@ -28,6 +29,7 @@ class SignupActivity : AppCompatActivity() {
         nextPage()
     }
 
+    //Function to move data to the next page
     private fun nextPage() {
         val intent = Intent(this, PhotoAndBioActivity::class.java)
         intent.putExtra("fullName", fullName)
@@ -60,6 +62,7 @@ class SignupActivity : AppCompatActivity() {
                     firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener{
                         if(it.isSuccessful){
 
+                            //getData function works
                             getData()
 
                         }else{
