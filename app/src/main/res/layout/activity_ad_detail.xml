@@ -9,127 +9,226 @@
     tools:context=".AdDetailActivity">
 
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_marginBottom="6dp"
-        android:paddingTop="16dp"
-        android:paddingBottom="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="-11dp"
+        android:layout_marginLeft="-11dp"
         android:src="@drawable/logo"
         android:background="@color/purple"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="23dp">
     </ImageView>
 
-    <ImageView
-        android:id="@+id/AnimalImageView"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_gravity="center"
-        android:scaleType="centerCrop"
-        android:background="@drawable/round_shape"
-        android:layout_marginTop="10dp" />
-
-    <TextView
-        android:id="@+id/AnimalName"
-        android:text=""
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="5dp"
-        android:textAlignment="center"
-        android:textSize="30sp"
-        android:textColor="@color/white"
-        android:textAllCaps="false"
-        android:textFontWeight="400"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:fontFamily="@font/nunito_bold" />
+        android:background="#989696"
+        android:layout_marginTop="15dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="1dp">
+
+            <ImageView
+                android:id="@+id/AnimalImageView"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_centerHorizontal="true"
+                android:scaleType="centerCrop"
+                android:background="@drawable/round_shape"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:id="@+id/AnimalName"
+                android:text=""
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@id/AnimalImageView"
+                android:layout_marginTop="5dp"
+                android:textAlignment="center"
+                android:textSize="30sp"
+                android:textColor="@color/purple"
+                android:textAllCaps="false"
+                android:textFontWeight="400"
+                android:fontFamily="@font/nunito_bold"
+                android:layout_centerHorizontal="true"/>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
 
 
-
-    <Button
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:id="@+id/AnimalBio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:background="@drawable/white_border"
-        android:fontFamily="@font/nunito_regular"
-        android:textAllCaps="false"
-        android:textColor="@color/purple"
-        android:textSize="17sp"
-        android:padding="15dp">
-    </Button>
+        android:background="#FFFFFF">
 
-    <TextView
-        android:id="@+id/AnimalAge"
-        android:layout_width="wrap_content"
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito_bold"
+            android:textAllCaps="false"
+            android:textColor="@color/purple"
+            android:textSize="20sp"
+            android:paddingLeft="25dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:background="#F5F5F5"
+            android:text="Animal Biography"/>
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Animal Age"
-        android:layout_marginLeft="25dp"
-        android:textColor="@color/white"
-        android:fontFamily="@font/nunito_semibold"
-        android:textSize="17sp" />
+        android:layout_gravity="center"
+        android:background="#FFFFFF">
 
-    <TextView
-        android:id="@+id/AnimalGender"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Animal Gender"
-        android:layout_marginLeft="25dp"
-        android:textColor="@color/white"
-        android:fontFamily="@font/nunito_semibold"
-        android:textSize="17sp"/>
+        <TextView
+            android:id="@+id/AnimalBio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito_medium"
+            android:textAllCaps="false"
+            android:textColor="@color/purple"
+            android:textSize="17sp"
+            android:paddingLeft="25dp"
+            android:paddingTop="35dp"
+            android:paddingBottom="55dp"
+            android:background="#F5F5F5" />
+    </androidx.cardview.widget.CardView>
 
 
-    <TextView
-        android:id="@+id/AnimalRace"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Animal Race"
-        android:layout_marginLeft="25dp"
-        android:textColor="@color/white"
-        android:fontFamily="@font/nunito_semibold"
-        android:textSize="17sp"/>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="152dp"
+        android:layout_gravity="center"
+        android:background="@android:color/white">
 
-    <Button
-        android:layout_width="120dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginBottom="15dp"
-        android:background="@drawable/white_border"
-        android:fontFamily="@font/nunito_bold"
-        android:text="Info"
-        android:textAllCaps="false"
-        android:textColor="@color/purple"
-        android:textSize="17sp">
-    </Button>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:fontFamily="@font/nunito_bold"
+            android:text="Animal Information"
+            android:textColor="@color/purple"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/AnimalLocation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Animal Location"
-        android:layout_marginLeft="25dp"
-        android:textColor="@color/white"
-        android:fontFamily="@font/nunito_semibold"
-        android:textSize="17sp"/>
 
-    <TextView
-        android:id="@+id/AnimalOwner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Animal Owner"
-        android:layout_marginLeft="25dp"
-        android:textColor="@color/white"
-        android:fontFamily="@font/nunito_semibold"
-        android:textSize="17sp"/>
-    <TextView
-        android:id="@+id/AnimalOwnerPhone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Animal Owner Phone"
-        android:layout_marginLeft="25dp"
-        android:textColor="@color/white"
-        android:fontFamily="@font/nunito_semibold"
-        android:textSize="17sp"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="55dp">
+
+            <!-- Sol taraftaki TextView'lar -->
+
+            <TextView
+                android:id="@+id/AnimalRace"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:fontFamily="@font/nunito_medium"
+                android:text="Animal Age"
+                android:textColor="@color/purple"
+                android:textSize="17sp" />
+
+            <!-- Sağ taraftaki TextView'lar -->
+
+            <TextView
+                android:id="@+id/AnimalLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/AnimalRace"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/nunito_medium"
+                android:text="Animal Gender"
+                android:textColor="@color/purple"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/AnimalAge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="103dp"
+                android:fontFamily="@font/nunito_medium"
+                android:text="Race"
+                android:textColor="@color/purple"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/AnimalGender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/AnimalAge"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="23dp"
+                android:layout_marginEnd="60dp"
+                android:fontFamily="@font/nunito_medium"
+                android:text="Location"
+                android:textColor="@color/purple"
+                android:textSize="17sp" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="283dp"
+        android:background="#F5F5F5"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#F5F5F5"
+            android:orientation="vertical"
+            android:paddingTop="20dp">
+
+            <!-- Başlık -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#F5F5F5"
+                android:fontFamily="@font/nunito_bold"
+                android:text="Owner Information"
+                android:layout_marginLeft="25dp"
+                android:textAllCaps="false"
+                android:textColor="@color/purple"
+                android:textSize="20sp" />
+
+            <!-- İlk TextView -->
+            <TextView
+                android:id="@+id/AnimalOwner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="25dp"
+                android:background="#F5F5F5"
+                android:fontFamily="@font/nunito_medium"
+                android:text="Animal Owner"
+                android:textColor="@color/purple"
+                android:textSize="17sp" />
+
+            <!-- İkinci TextView -->
+            <TextView
+                android:id="@+id/AnimalOwnerPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="#F5F5F5"
+                android:layout_marginLeft="25dp"
+                android:fontFamily="@font/nunito_medium"
+                android:text="Animal Owner Phone"
+                android:textColor="@color/purple"
+                android:textSize="17sp" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
 
 </LinearLayout>
