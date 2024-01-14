@@ -94,9 +94,11 @@
             android:textColor="@color/purple"
             android:textSize="17sp"
             android:paddingLeft="25dp"
-            android:paddingTop="35dp"
-            android:paddingBottom="55dp"
-            android:background="#F5F5F5" />
+            android:paddingRight="25dp"
+            android:paddingTop="25dp"
+            android:paddingBottom="35dp"
+            android:background="#F5F5F5"
+            android:gravity="start|center_vertical"/>
     </androidx.cardview.widget.CardView>
 
 

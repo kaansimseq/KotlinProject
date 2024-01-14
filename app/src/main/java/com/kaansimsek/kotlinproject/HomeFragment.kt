@@ -3,6 +3,7 @@ package com.kaansimsek.kotlinproject
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
+import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.view.Gravity
 import android.view.LayoutInflater
@@ -87,6 +88,15 @@ class HomeFragment : Fragment() {
                         350,
                     )
                     imageLayoutParams.setMargins(124, 144, 144, 144) // Sağdan, soldan, yukarıdan, aşağıdan padding ayarlayın
+                    // Yuvarlak kenarlığın oluşturulması
+                    val shape = GradientDrawable()
+                    shape.shape = GradientDrawable.OVAL
+                    shape.setColor(Color.TRANSPARENT) // İçi boşaltılıyor, çünkü resmi yuvarlak kenarların içine koymak istiyoruz
+                    shape.setStroke(5, Color.BLACK) // Kenarlığı siyah renkte, isteğe bağlı olarak ayarlanabilir
+
+                    // ImageView'ın arkaplanını ve yuvarlak kenarı ayarlama
+                    imageView.background = shape
+                    imageView.clipToOutline = true
                     imageView.layoutParams = imageLayoutParams
                     imageView.scaleType = ImageView.ScaleType.CENTER_CROP
                     Glide.with(requireContext())

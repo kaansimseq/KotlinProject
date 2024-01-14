@@ -22,6 +22,7 @@ import java.util.UUID
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
 
@@ -57,14 +58,41 @@ class AdActivity : AppCompatActivity() {
         val animalPhoto = findViewById<ShapeableImageView>(R.id.animalphoto)
 
         ppButton.setOnClickListener {
+            ImagePicker.with(this)
+                .crop(1f,1f)	    	            //Crop image(Optional), Check Customization for more option
+                .compress(1024)			        //Final image size will be less than 1 MB(Optional)
+                .maxResultSize(1080, 1080)	//Final image resolution will be less than 1080 x 1080(Optional)
+                .start()
+            /*
             // Kullanıcıya galeriyi açma izni veren intent
             val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
             startActivityForResult(intent, REQUEST_IMAGE_PICK)
+             */
         }
 
         val publishButton = findViewById<Button>(R.id.publishButton)
         publishButton.setOnClickListener {
-            uploadPhotoAndDataToFirebase()
+
+            val nameEditText = findViewById<EditText>(R.id.nametext)
+            val bioEditText = findViewById<EditText>(R.id.biotext)
+            val agetext = findViewById<EditText>(R.id.agetext)
+            val racetext = findViewById<EditText>(R.id.racetext)
+            val locationtext = findViewById<EditText>(R.id.locationtext)
+            val genderSpinner = findViewById<Spinner>(R.id.spinnerGender)
+
+            val name = nameEditText.text.toString()
+            val bio = bioEditText.text.toString()
+            val age = agetext.text.toString()
+            val race = racetext.text.toString()
+            val location = locationtext.text.toString()
+            val gender = genderSpinner.selectedItem.toString()
+
+            if(bio.isNotEmpty() && name.isNotEmpty() && race.isNotEmpty() && location.isNotEmpty() && gender.isNotEmpty() && age.isNotEmpty()){
+                uploadPhotoAndDataToFirebase()
+            }else{
+                Toast.makeText(this, "Fields cannot be empty!!", Toast.LENGTH_SHORT).show()
+            }
+
         }
 
         val spinnerGender = findViewById<Spinner>(R.id.spinnerGender)
@@ -79,9 +107,9 @@ class AdActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (requestCode == REQUEST_IMAGE_PICK && resultCode == Activity.RESULT_OK && data != null) {
+        if (resultCode == Activity.RESULT_OK) {
             // Seçilen fotoğrafın URI'sini al
-            selectedImageUri = data.data
+            selectedImageUri = data?.data
 
             // URI'yi animalphoto ImageView'e yansıt
             val animalPhoto = findViewById<ShapeableImageView>(R.id.animalphoto)
