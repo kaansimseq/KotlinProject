@@ -191,7 +191,7 @@
             android:orientation="vertical"
             android:paddingTop="20dp">
 
-            <!-- Başlık -->
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -202,8 +202,6 @@
                 android:textAllCaps="false"
                 android:textColor="@color/purple"
                 android:textSize="20sp" />
-
-            <!-- İlk TextView -->
             <TextView
                 android:id="@+id/AnimalOwner"
                 android:layout_width="wrap_content"
@@ -216,7 +214,7 @@
                 android:textColor="@color/purple"
                 android:textSize="17sp" />
 
-            <!-- İkinci TextView -->
+
             <TextView
                 android:id="@+id/AnimalOwnerPhone"
                 android:layout_width="wrap_content"

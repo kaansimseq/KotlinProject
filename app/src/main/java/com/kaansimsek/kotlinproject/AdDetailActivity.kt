@@ -73,7 +73,7 @@ class AdDetailActivity : AppCompatActivity() {
                 val ownerText = "Owner: $animalowner"
                 val phoneText = "Phone: $ownerphone"
 
-// SpannableString oluşturun
+
                 val spannableGender = SpannableString(genderText)
                 val spannableLocation = SpannableString(locationText)
                 val spannableRace = SpannableString(raceText)
@@ -81,7 +81,7 @@ class AdDetailActivity : AppCompatActivity() {
                 val spannableOwner = SpannableString(ownerText)
                 val spannablePhone = SpannableString(phoneText)
 
-// Belirli kelimeleri kalın yapın
+// Belirli kelimeleri kalın yapmak için
                 spannableGender.setSpan(StyleSpan(Typeface.BOLD), 0, 6, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
                 spannableLocation.setSpan(StyleSpan(android.graphics.Typeface.BOLD), 0, 8, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
                 spannableRace.setSpan(StyleSpan(android.graphics.Typeface.BOLD), 0, 5, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
@@ -89,7 +89,7 @@ class AdDetailActivity : AppCompatActivity() {
                 spannableOwner.setSpan(StyleSpan(android.graphics.Typeface.BOLD), 0, 6, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
                 spannablePhone.setSpan(StyleSpan(android.graphics.Typeface.BOLD), 0, 6, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
 
-// TextView'lara uygulayın
+
                 AnimalGender.text = spannableGender
                 AnimalLocation.text = spannableLocation
                 AnimalRace.text = spannableRace

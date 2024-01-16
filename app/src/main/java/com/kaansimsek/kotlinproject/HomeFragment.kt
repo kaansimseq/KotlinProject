@@ -111,51 +111,51 @@ class HomeFragment : Fragment() {
                         ViewGroup.LayoutParams.MATCH_PARENT,
                         ViewGroup.LayoutParams.MATCH_PARENT
                     )
-                    textInfoLayout.gravity = Gravity.CENTER_VERTICAL // Dikey olarak ortalamak için gravity ekleyin
+                    textInfoLayout.gravity = Gravity.CENTER_VERTICAL
                     horizontalLayout.addView(textInfoLayout)
 
                     val nameTextView = TextView(requireContext())
                     nameTextView.setPadding(0, 12, 0, 12)
                     nameTextView.text = "${animalName}"
                     nameTextView.textSize = 25f // Yazı boyutunu ayarlayın
-                    nameTextView.setTypeface(null, Typeface.BOLD) // Kalın yapmak için setTypeface kullanın
-                    nameTextView.setTextColor(Color.parseColor("#6B5172")) // Renk kodunu ayarlayın
-                    nameTextView.gravity = Gravity.LEFT // TextView'yi ortalamak için gravity ekleyin
+                    nameTextView.setTypeface(null, Typeface.BOLD)
+                    nameTextView.setTextColor(Color.parseColor("#6B5172"))
+                    nameTextView.gravity = Gravity.LEFT
                     textInfoLayout.addView(nameTextView)
 
                     val ageTextView = TextView(requireContext())
                     ageTextView.text = "· $animalAge years "
                     ageTextView.textSize = 18f // Yazı boyutunu ayarlayın
-                    ageTextView.setTextColor(Color.parseColor("#6B5172")) // Renk kodunu ayarlayın
-                    ageTextView.gravity = Gravity.LEFT // TextView'yi ortalamak için gravity ekleyin
+                    ageTextView.setTextColor(Color.parseColor("#6B5172"))
+                    ageTextView.gravity = Gravity.LEFT
                     textInfoLayout.addView(ageTextView)
 
                     val genderTextView = TextView(requireContext())
                     genderTextView.text = "· $animalgender"
-                    genderTextView.textSize = 18f // Yazı boyutunu ayarlayın
-                    genderTextView.setTextColor(Color.parseColor("#6B5172")) // Renk kodunu ayarlayın
-                    genderTextView.gravity = Gravity.LEFT // TextView'yi ortalamak için gravity ekleyin
+                    genderTextView.textSize = 18f
+                    genderTextView.setTextColor(Color.parseColor("#6B5172"))
+                    genderTextView.gravity = Gravity.LEFT
                     textInfoLayout.addView(genderTextView)
 
                     val raceTextView = TextView(requireContext())
                     raceTextView.text = "· $animalrace"
-                    raceTextView.textSize = 18f // Yazı boyutunu ayarlayın
-                    raceTextView.setTextColor(Color.parseColor("#6B5172")) // Renk kodunu ayarlayın
-                    raceTextView.gravity = Gravity.LEFT // TextView'yi ortalamak için gravity ekleyin
+                    raceTextView.textSize = 18f //
+                    raceTextView.setTextColor(Color.parseColor("#6B5172"))
+                    raceTextView.gravity = Gravity.LEFT
                     textInfoLayout.addView(raceTextView)
 
                     val detailsButton = TextView(requireContext())
 
-// Details butonunun genişlik ve yüksekliğini, içindeki metne göre otomatik olarak ayarlayın
+
                     detailsButton.text = "Details"
                     detailsButton.textSize = 18f
                     detailsButton.setTextColor(Color.parseColor("#FFFFFF"))
-                    detailsButton.setBackgroundResource(R.drawable.green_border) // Kendi tasarımınıza uygun bir background ekleyebilirsiniz
+                    detailsButton.setBackgroundResource(R.drawable.green_border)
 
-// Soldan ve sağdan 8 dp'lik padding ayarlayın
+
                     detailsButton.setPadding(65, 5, 65, 5)
                     detailsButton.paddingRight
-// Yazıyı ortalamak için gravity'yi ayarlayın
+
                     detailsButton.gravity = Gravity.CENTER
 
                     detailsButton.setOnClickListener {
@@ -167,15 +167,15 @@ class HomeFragment : Fragment() {
                         LinearLayout.LayoutParams.WRAP_CONTENT
                     )
 
-// Sol, üst, sağ, alt sırasıyla margin değerlerini ayarla
-                    marginLayoutParams.setMargins(0, 16, 8, 0)  // Örnekte sağa 16dp margin eklenmiştir
 
-// LayoutParams'i TextView'e uygula
+                    marginLayoutParams.setMargins(0, 16, 8, 0)
+
+
                     detailsButton.layoutParams = marginLayoutParams
                     textInfoLayout.addView(detailsButton)
 
 
-                    // ContainerLayout'a CardView'ı ekle
+
 
                     containerLayout.addView(cardView)
 
@@ -183,7 +183,7 @@ class HomeFragment : Fragment() {
 
                 }
             } catch (e: Exception) {
-                // Hata durumunda işlemler
+
             }
         }
     }

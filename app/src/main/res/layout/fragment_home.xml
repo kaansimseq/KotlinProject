@@ -52,7 +52,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             >
-            <!-- CardViews will be added dynamically here -->
         </LinearLayout>
 
     </ScrollView>
